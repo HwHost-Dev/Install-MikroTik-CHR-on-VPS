@@ -36,7 +36,8 @@ echo "/ip address add address=$ADDRESS interface=[/interface ethernet find where
 /ip route add gateway=$GATEWAY
 /ip service disable telnet
 /system identity set name=$HOSTNAME
-/user set 0 name=root password=123456789
+/user add name=root password=123456789 group=full
+/user remove 0
 " > /mnt/rw/autorun.scr && \
 
 # Unmount and clean up
