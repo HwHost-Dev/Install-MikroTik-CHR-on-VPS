@@ -6,9 +6,6 @@ echo "=== hwhost.fr ==="
 echo "=== MikroTik Installer ==="
 echo
 
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get -y install gzip
-
 # Retrieve the latest version dynamically
 latest_version=$(curl -s https://mikrotik.com/download | grep -oP 'chr-\K[0-9]+\.[0-9]+\.[0-9]+(?=\.img\.zip)' | sort -V | tail -n 1)
 
