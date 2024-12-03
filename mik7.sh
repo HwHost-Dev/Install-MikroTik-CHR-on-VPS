@@ -7,13 +7,13 @@ echo "=== MikroTik Installer ==="
 echo
 
 # Retrieve the latest version dynamically
-latest_version=$(curl -s https://mikrotik.com/download | grep -oP 'chr-\K[0-9]+\.[0-9]+\.[0-9]+(?=\.img\.zip)' | sort -V | tail -n 1)
+latest_version=$(curl -s https://mikrotik.com/download -4 | grep -oP 'chr-\K[0-9]+\.[0-9]+\.[0-9]+(?=\.img\.zip)' | sort -V | tail -n 1)
 
 # Construct the download URL for the latest version
 download_url="https://download.mikrotik.com/routeros/$latest_version/chr-$latest_version.img.zip"
 
 # Download and extract the image file
-wget "$download_url" -O chr.img.zip
+wget -4 "$download_url" -O chr.img.zip
 gunzip -c chr.img.zip > chr.img && \
 
 kpartx -av chr.img
